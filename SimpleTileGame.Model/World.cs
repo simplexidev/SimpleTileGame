@@ -1,21 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SimpleTileGame.Model
 {
     public class World
     {
-        private static Random rnd = new Random();
-        private Tile[,] tiles;
-        private List<TerrainType> allTerrainTypes = Enum.GetValues(typeof(TerrainType)).Cast<TerrainType>().ToList();
+        private static readonly Random rnd = new();
+        private readonly Tile[,] tiles;
+        private static readonly List<TerrainType> allTerrainTypes = Enum.GetValues(typeof(TerrainType)).Cast<TerrainType>().ToList();
+
+        public World(int columns, int rows)
+        {
+            tiles = new Tile[columns, rows];
+            for (int x = 0; x < columns; x++)
+            {
+                for (int y = 0; y < rows; y++)
+                {
+                    tiles[x, y] = new Tile(x, y, GetRandomTerrain());
+                }
+            }
+        }
 
         public int Columns
         {
             get { return tiles.GetLength(0); }
-        
         }
 
         public int Rows
@@ -24,28 +33,14 @@ namespace SimpleTileGame.Model
 
         }
 
-        public Tile getTile(int column, int row)
+        public Tile GetTile(int column, int row)
         {
             return tiles[column, row];
         }
 
-
-        public World(int columns, int rows, int pixelSize)
-        {
-            tiles = new Tile[columns, rows];
-            for (int x = 0; x < columns; x++)
-            {
-                for (int y = 0; y < rows; y++)
-                {
-                    tiles[x, y] = new Tile(x, y, getRandomTerrain());
-                }
-            }
-        }
-
-        private TerrainType getRandomTerrain()
+        private TerrainType GetRandomTerrain()
         {
             return allTerrainTypes[rnd.Next(allTerrainTypes.Count)];
-
         }
     }
 }

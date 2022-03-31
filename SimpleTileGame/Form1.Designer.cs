@@ -1,4 +1,6 @@
-﻿namespace SimpleTileGame
+﻿using System.Windows.Forms;
+
+namespace SimpleTileGame
 {
     partial class Form1
     {

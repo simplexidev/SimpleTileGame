@@ -1,3 +1,6 @@
+using System;
+using System.Windows.Forms;
+
 namespace SimpleTileGame
 {
     internal static class Program
@@ -6,7 +9,7 @@ namespace SimpleTileGame
         ///  The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());

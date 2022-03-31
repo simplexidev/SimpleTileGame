@@ -1,4 +1,4 @@
-namespace SimpleTileWorld
+namespace SimpleTileGame
 {
     internal static class Program
     {

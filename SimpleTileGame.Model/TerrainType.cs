@@ -1,4 +1,4 @@
-﻿namespace Model
+﻿namespace SimpleTileGame.Model
 {
     public enum TerrainType
     {

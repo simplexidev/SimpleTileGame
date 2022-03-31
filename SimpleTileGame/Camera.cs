@@ -1,11 +1,11 @@
-﻿using Model;
+﻿using SimpleTileGame.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SimpleTileWorld
+namespace SimpleTileGame
 {
     internal class Camera
     {

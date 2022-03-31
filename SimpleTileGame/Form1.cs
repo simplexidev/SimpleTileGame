@@ -1,6 +1,6 @@
-using Model;
+using SimpleTileGame.Model;
 
-namespace SimpleTileWorld
+namespace SimpleTileGame
 {
     public partial class Form1 : Form
     {

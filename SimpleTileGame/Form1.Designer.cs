@@ -1,4 +1,4 @@
-﻿namespace SimpleTileWorld
+﻿namespace SimpleTileGame
 {
     partial class Form1
     {

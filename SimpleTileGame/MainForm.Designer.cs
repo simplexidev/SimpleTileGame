@@ -35,30 +35,32 @@ namespace SimpleTileGame
             // 
             // lblInfo
             // 
-            this.lblInfo.AutoSize = true;
+            this.lblInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblInfo.BackColor = System.Drawing.Color.Transparent;
-            this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblInfo.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblInfo.ForeColor = System.Drawing.Color.White;
-            this.lblInfo.Location = new System.Drawing.Point(12, 897);
+            this.lblInfo.Location = new System.Drawing.Point(11, 541);
+            this.lblInfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(99, 48);
+            this.lblInfo.Size = new System.Drawing.Size(871, 22);
             this.lblInfo.TabIndex = 1;
             this.lblInfo.Text = "Info:";
             // 
-            // Form1
+            // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1276, 954);
+            this.ClientSize = new System.Drawing.Size(893, 572);
             this.Controls.Add(this.lblInfo);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "MainForm";
             this.Text = "Simple tile world - use arrows to scroll";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

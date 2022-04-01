@@ -1,8 +1,9 @@
 ﻿using System; // ArgumentNullException, ArguemntOutOfRangeException, IEquatable<T>, InvalidOperationException
 using System.Drawing; // Bitmap, Size
 
-namespace SimpleTileGame.Model
+namespace SimpleTileGame.Model // Tile
 {
+    //TODO: Add a `ImagePath` property.
     /// <summary>
     /// Represents a set of <see cref="Tile"/> structures that can be used in a <see cref="TileMap"/>.
     /// </summary>
@@ -22,15 +23,23 @@ namespace SimpleTileGame.Model
         /// <param name="tileSize">The size of each tile in this <see cref="TileSet"/>.</param>
         public TileSet(string imagePath, TileSize tileSize)
         {
+            // Ensure imagePath is not null or empty.
             if (string.IsNullOrWhiteSpace(imagePath))
                 throw new ArgumentNullException(nameof(imagePath), Strings.ImagePathMustBeProvided);
-            if ((int)tileSize != 16 && (int)tileSize != 32 && (int)tileSize != 64)
-                throw new ArgumentOutOfRangeException(nameof(imagePath), Strings.TileSizeIsInvalid);
 
+            // Ensure a valid TileSize value is provided.
+            if ((int)tileSize != 16 && (int)tileSize != 32 && (int)tileSize != 64)
+                throw new ArgumentOutOfRangeException(nameof(tileSize), Strings.TileSizeIsInvalid);
+
+            // Initialize, validate and set the image.
             Bitmap image = new(imagePath);
             ValidateImageSize(image, tileSize);
             Image = image;
+
+            // Set the tile size.
             TileSize = tileSize;
+
+            // Get the tiles based on the image provided.
             tiles = GetTilesFromImage(image, tileSize);
         }
 
@@ -69,6 +78,7 @@ namespace SimpleTileGame.Model
         /// <returns>A <see cref="Tile"/> object with the specified index.</returns>
         public Tile GetTile(Point index)
         {
+            //TODO: Range check for index
             return tiles[index.X, index.Y];
         }
 
@@ -92,16 +102,37 @@ namespace SimpleTileGame.Model
         /// <returns>A two-dimensional array of tiles from a <see cref="Bitmap"/>.</returns>
         private static Tile[,] GetTilesFromImage(Bitmap image, TileSize tileSize)
         {
-            // TODO: Dev Documentation.
-            Tile[,] tiles = new Tile[image.Width / (int)tileSize, image.Height / (int)tileSize];
-            for (int i = 0; i < tiles.GetLength(0); i++)
+
+            //TODO: Null check for image.
+
+            // Ensure a valid TileSize value is provided.
+            if ((int)tileSize != 16 && (int)tileSize != 32 && (int)tileSize != 64)
+                throw new ArgumentOutOfRangeException(nameof(tileSize), Strings.TileSizeIsInvalid);
+
+            // Determine the TileMap's width and height.
+            int tileMapWidth = image.Width / (int)tileSize;
+            int tileMapHeight = image.Height / (int)tileSize;
+
+            // Initialize a new Tile array with the TileMap's width and height.
+            Tile[,] tiles = new Tile[tileMapWidth, tileMapHeight];
+
+            for (int x = 0; x < tileMapWidth; x++)
             {
-                for (int j = 0; j < tiles.GetLength(1); j++)
+                for (int y = 0; y < tileMapHeight; y++)
                 {
-                    // TODO: Dev Documentation.
-                    tiles[i, j] = new(new Point(i, j), new Rectangle(i * (int)tileSize, j * (int)tileSize, (int)tileSize, (int)tileSize));
+                    // Get the index for the tile.
+                    Point index = new(x, y);
+
+                    // Get the bounds for the tile.
+                    Point boundsLocation = new(x * (int)tileSize, y * (int)tileSize);
+                    Size boundsSize = new((int)tileSize, (int)tileSize);
+
+                    // Set the new tile at the specified index in the Tile array.
+                    tiles[x, y] = new(index, new Rectangle(boundsLocation, boundsSize));
                 }
             }
+
+            // Return the populated Tile array.
             return tiles;
         }
 

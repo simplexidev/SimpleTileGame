@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using System.Drawing; // Point, Size, Graphics, Rectangle
 
-namespace SimpleTileGame.Model
+namespace SimpleTileGame.Model // TileMap, Tile
 {
     //TODO: Documentation.
     public class Camera
@@ -23,7 +23,6 @@ namespace SimpleTileGame.Model
             get => topLeft;
             private set
             {
-                //TODO: Dev Documentation.
                 if (value.X >= 0 && value.Y >= 0 && value.X < Map.Size.Width - ViewSize.Width && value.Y < Map.Size.Height - ViewSize.Height)
                     topLeft = value;
             }
@@ -39,41 +38,54 @@ namespace SimpleTileGame.Model
             {
                 for (int y = 0; y < ViewSize.Height; y++)
                 {
-                    //TODO: Dev Documentation.
-                    Tile tileToDraw = Map.GetTile(TopLeft.X + x, TopLeft.Y + y);
+                    // Get the tile to draw.
+                    Tile tile = Map.GetTile(new(TopLeft.X + x, TopLeft.Y + y));
 
-                    //TODO: Dev Documentation.
+                    // Get the TileSize as an int for ease-of-use.
                     int tileSize = (int)Map.TileSet.TileSize;
+
+                    // Determine what part of the camera's viewable are to render.
                     Rectangle destinationRectangle = new(x * tileSize, y * tileSize, tileSize, tileSize);
-                    Rectangle sourceRectangle = Map.TileSet.GetTile(tileToDraw.Index).Bounds.Value;
+
+                    // Get the source bounds of the Tile from the TileSet.
+                    Rectangle sourceRectangle = Map.TileSet.GetTile(tile.Index).Bounds.Value;
+
+                    // Render the tile.
                     g.DrawImage(Map.TileSet.Image, destinationRectangle, sourceRectangle, GraphicsUnit.Pixel);
                 }
             }
         }
 
-        //TODO: Documentation.
+        /// <summary>
+        /// Moves the camera left one tile.
+        /// </summary>
         public void MoveLeft()
         {
             TopLeft = new Point(TopLeft.X - 1, TopLeft.Y);
         }
 
-        //TODO: Documentation.
+        /// <summary>
+        /// Moves the camera right one tile.
+        /// </summary>
         public void MoveRight()
         {
             TopLeft = new Point(TopLeft.X + 1, TopLeft.Y);
         }
 
-        //TODO: Documentation.
+        /// <summary>
+        /// Moves the camera up one tile.
+        /// </summary>
         public void MoveUp()
         {
             TopLeft = new Point(TopLeft.X, TopLeft.Y - 1);
         }
 
-        //TODO: Documentation.
+        /// <summary>
+        /// Moves the camera down one tile.
+        /// </summary>
         public void MoveDown()
         {
             TopLeft = new Point(TopLeft.X, TopLeft.Y + 1);
         }
-
     }
 }

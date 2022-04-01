@@ -1,7 +1,7 @@
-﻿using System;
-using System.Drawing;
+﻿using System; // IEquatable<T>, ArgumentNullException
+using System.Drawing; // Size
 
-namespace SimpleTileGame.Model
+namespace SimpleTileGame.Model // Tile, TileSet
 {
     /// <summary>
     /// Represents a grid of <see cref="Tile"/> structures referencing a specific <see cref="Model.TileSet"/>.
@@ -55,14 +55,13 @@ namespace SimpleTileGame.Model
         public bool IsEmpty => this == Empty;
 
         /// <summary>
-        /// Gets a <see cref="Tile"/> from this <see cref="TileMap"/> at the specified row and column.
+        /// Gets a <see cref="Tile"/> from this <see cref="TileMap"/> at the specified lcoation.
         /// </summary>
-        /// <param name="row">The row the <see cref="Tile"/> is located in.</param>
-        /// <param name="column">The column the <see cref="Tile"/> is located in.</param>
-        /// <returns>A <see cref="Tile"/> object with the specified index.</returns>
-        public Tile GetTile(int row, int column)
+        /// <param name="row">The location of the <see cref="Tile"/>.</param>
+        /// <returns>A <see cref="Tile"/> object with the specified lcoation.</returns>
+        public Tile GetTile(Point location)
         {
-            return tiles[row, column];
+            return tiles[location.X, location.Y];
         }
 
         /// <summary>

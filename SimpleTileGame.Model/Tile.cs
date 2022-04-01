@@ -24,8 +24,12 @@ namespace SimpleTileGame.Model
         /// Initializes a new instance of the <see cref="Tile"/> structure with the specified index and bounds.
         /// </summary>
         /// <param name="index">The index of this <see cref="Tile"/>.</param>
-        /// <param name="location">The location of this <see cref="Tile"/> in a <see cref="TileMap"/>, in tiles.</param>
+        /// <param name="location">The location of this <see cref="Tile"/> in a <see cref="TileSet"/>, in tiles.</param>
         /// <param name="bounds">The bounds of this <see cref="Tile"/> in a <see cref="TileMap"/>, in pixels.</param>
+        /// <remarks>
+        /// This constructor should be used only when initializing <see cref="Tile"/> structures in a
+        /// <see cref="TileMap"/>, as the <see cref="Location"/> property is unused in a <see cref="TileSet"/>.
+        /// </remarks>
         public Tile(Point index, Point? location, Rectangle bounds)
         {
             if (index.IsEmpty) throw new ArgumentNullException(nameof(index), "A tile's index cannot be empty.");
@@ -67,10 +71,13 @@ namespace SimpleTileGame.Model
         public Rectangle Bounds { get; }
 
         /// <summary>
-        /// Spacifies whether this <see cref="Tile"/> contains the same index, location, and bounds as another <see cref="Tile"/>.
+        /// Spacifies whether this <see cref="Tile"/> contains the same index, location, and bounds as another
+        /// <see cref="Tile"/>.
         /// </summary>
         /// <param name="other">The <see cref="Tile"/> to test for equality.</param>
-        /// <returns><see langword="true"/> if <paramref name="other"/> has the same values as this <see cref="Tile"/>.</returns>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="other"/> has the same values as this <see cref="Tile"/>.
+        /// </returns>
         public bool Equals(Tile other)
         {
             return Index == other.Index && Location == other.Location && Bounds == other.Bounds;
@@ -80,7 +87,10 @@ namespace SimpleTileGame.Model
         /// Spacifies whether this <see cref="Tile"/> contains the same values as the specified <see cref="object"/>.
         /// </summary>
         /// <param name="other">The <see cref="object"/> to test for equality.</param>
-        /// <returns><see langword="true"/> if <paramref name="obj"/> is a <see cref="Tile"/> and has the same values as this <see cref="Tile"/>.</returns>
+        /// <returns>
+        /// <see langword="true"/> if <paramref name="obj"/> is a <see cref="Tile"/> and has the same values as this
+        /// <see cref="Tile"/>.
+        /// </returns>
         public override bool Equals(object? obj)
         {
             return obj is Tile tile && Equals(tile);
@@ -105,22 +115,30 @@ namespace SimpleTileGame.Model
         }
 
         /// <summary>
-        /// Compares two <see cref="Tile"/> structures. The result indicates whether the values of the two <see cref="Tile"> structures are equal.
+        /// Compares two <see cref="Tile"/> structures. The result indicates whether the values of the two
+        /// <see cref="Tile"> structures are equal.
         /// </summary>
         /// <param name="left">A <see cref="Tile"/> to compare.</param>
         /// <param name="right">A <see cref="Tile"/> to compare.</param>
-        /// <returns><see langword="true"/> if the values of <paramref name="left"/> and <paramref name="right"/> are equal; otherwise, <see langword="false"/>.</returns>
+        /// <returns>
+        /// <see langword="true"/> if the values of <paramref name="left"/> and <paramref name="right"/> are equal;
+        /// otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator ==(Tile left, Tile right)
         {
             return left.Equals(right);
         }
 
         /// <summary>
-        /// Compares two <see cref="Tile"/> structures. The result indicates whether the values of the two <see cref="Tile"> structures are unequal.
+        /// Compares two <see cref="Tile"/> structures. The result indicates whether the values of the two
+        /// <see cref="Tile"> structures are unequal.
         /// </summary>
         /// <param name="left">A <see cref="Tile"/> to compare.</param>
         /// <param name="right">A <see cref="Tile"/> to compare.</param>
-        /// <returns><see langword="true"/> if the values of <paramref name="left"/> and <paramref name="right"/> differ; otherwise, <see langword="false"/>.</returns>
+        /// <returns>
+        /// <see langword="true"/> if the values of <paramref name="left"/> and <paramref name="right"/> differ;
+        /// otherwise, <see langword="false"/>.
+        /// </returns>
         public static bool operator !=(Tile left, Tile right)
         {
             return !left.Equals(right);

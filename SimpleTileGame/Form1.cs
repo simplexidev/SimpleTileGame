@@ -10,7 +10,7 @@ namespace SimpleTileGame
 {
     public partial class Form1 : Form
     {
-        private readonly World world = new(30, 30);
+        private readonly TileMap world = new(30, 30);
         private Camera camera;
         private readonly int tilesize = 64;
 

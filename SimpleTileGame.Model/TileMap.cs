@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace SimpleTileGame.Model
 {
-    public class World
+    public class TileMap
     {
         private static readonly Random rnd = new();
         private readonly Tile[,] tiles;
         private static readonly List<TerrainType> allTerrainTypes = Enum.GetValues(typeof(TerrainType)).Cast<TerrainType>().ToList();
 
-        public World(int columns, int rows)
+        public TileMap(int columns, int rows)
         {
             tiles = new Tile[columns, rows];
             for (int x = 0; x < columns; x++)

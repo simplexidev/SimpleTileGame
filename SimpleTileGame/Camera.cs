@@ -7,7 +7,7 @@ namespace SimpleTileGame
 {
     internal class Camera
     {
-        private readonly World world;
+        private readonly TileMap world;
         private readonly Dictionary<TerrainType, Rectangle> tilesetTerrainPositions;
         private readonly Bitmap tileset;
         private readonly int tileSize;
@@ -28,7 +28,7 @@ namespace SimpleTileGame
             }
         }
 
-        public Camera(World world, Bitmap tileset, Dictionary<TerrainType, Rectangle> tilesetTerrainPositions, int tileSize, int columnsToRender, int rowsToRender)
+        public Camera(TileMap world, Bitmap tileset, Dictionary<TerrainType, Rectangle> tilesetTerrainPositions, int tileSize, int columnsToRender, int rowsToRender)
         {
             this.world = world;
             this.tileset = tileset; 

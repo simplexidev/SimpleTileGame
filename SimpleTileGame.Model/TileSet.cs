@@ -72,6 +72,7 @@ namespace SimpleTileGame.Model
         /// <param name="tileSize">The size of each tile.</param>
         private static void ValidateImageSize(Bitmap image, TileSize tileSize)
         {
+            // TODO: Dev Documentation.
             if (image.Width % (int)tileSize != 0 || image.Height % (int)tileSize != 0)
                 throw new InvalidOperationException("Image size mismatch.");
         }
@@ -84,11 +85,13 @@ namespace SimpleTileGame.Model
         /// <returns>A two-dimensional array of tiles from a <see cref="Bitmap"/>.</returns>
         private static Tile[,] GetTilesFromImage(Bitmap image, TileSize tileSize)
         {
+            // TODO: Dev Documentation.
             Tile[,] tiles = new Tile[image.Width / (int)tileSize, image.Height / (int)tileSize];
             for (int i = 0; i < tiles.GetLength(0); i++)
             {
                 for (int j = 0; j < tiles.GetLength(1); j++)
                 {
+                    // TODO: Dev Documentation.
                     tiles[i, j] = new(new(i, j), new(i * (int)tileSize, j * (int)tileSize, (int)tileSize, (int)tileSize));
                 }
             }

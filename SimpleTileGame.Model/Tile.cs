@@ -32,8 +32,8 @@ namespace SimpleTileGame.Model
         /// </remarks>
         public Tile(Point index, Point? location, Rectangle bounds)
         {
-            if (index.IsEmpty) throw new ArgumentNullException(nameof(index), "A tile's index cannot be empty.");
-            if (bounds.IsEmpty) throw new ArgumentNullException(nameof(bounds), "A tile's bounds cannot be empty.");
+            if (index.IsEmpty) throw new ArgumentNullException(nameof(index), Strings.TileIndexCannotBeEmpty);
+            if (bounds.IsEmpty) throw new ArgumentNullException(nameof(bounds), Strings.TileBoundsCannotBeEmpty);
 
             Index = index;
             Location = location;

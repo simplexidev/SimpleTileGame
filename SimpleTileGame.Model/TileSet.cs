@@ -18,9 +18,9 @@ namespace SimpleTileGame.Model
         public TileSet(string imagePath, TileSize tileSize)
         {
             if (string.IsNullOrWhiteSpace(imagePath))
-                throw new ArgumentNullException(nameof(imagePath), "An image path must be provided when initializing a `TileSet` structure.");
-            if ((int)tileSize < 0 || (int)tileSize > 2)
-                throw new ArgumentOutOfRangeException(nameof(imagePath), "The specified tile size is invalid.");
+                throw new ArgumentNullException(nameof(imagePath), Strings.ImagePathMustBeProvided);
+            if ((int)tileSize != 16 && (int)tileSize != 32 && (int)tileSize != 64)
+                throw new ArgumentOutOfRangeException(nameof(imagePath), Strings.TileSizeIsInvalid);
 
             Bitmap image = new(imagePath);
             ValidateImageSize(image, tileSize);
@@ -74,7 +74,7 @@ namespace SimpleTileGame.Model
         {
             // TODO: Dev Documentation.
             if (image.Width % (int)tileSize != 0 || image.Height % (int)tileSize != 0)
-                throw new InvalidOperationException("Image size mismatch.");
+                throw new InvalidOperationException(Strings.ImageSizeMismatch);
         }
 
         /// <summary>

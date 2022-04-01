@@ -41,11 +41,6 @@ namespace SimpleTileGame.Model
         }
 
         /// <summary>
-        /// Gets a value indicating whether this <see cref="Tile"/> is empty.
-        /// </summary>
-        public bool IsEmpty => this == Empty;
-
-        /// <summary>
         /// Gets the location of this <see cref="Tile"/> in a <see cref="TileMap"/>.
         /// </summary>
         /// <remarks>
@@ -69,6 +64,11 @@ namespace SimpleTileGame.Model
         /// This property is in terms of pixels.
         /// </remarks>
         public Rectangle Bounds { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="Tile"/> is empty.
+        /// </summary>
+        public bool IsEmpty => this == Empty;
 
         /// <summary>
         /// Spacifies whether this <see cref="Tile"/> contains the same index, location, and bounds as another

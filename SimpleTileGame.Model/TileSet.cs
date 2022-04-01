@@ -11,6 +11,11 @@ namespace SimpleTileGame.Model
         private readonly Tile[,] tiles;
 
         /// <summary>
+        /// Represents an uninitialized <see cref="TileSet"/> structure.
+        /// </summary>
+        public static readonly TileSet Empty = new();
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="TileSet"/> structure with the specified image and tile size.
         /// </summary>
         /// <param name="imagePath">A full path to the image this <see cref="TileSet"/> represents.</param>
@@ -40,19 +45,22 @@ namespace SimpleTileGame.Model
         public Bitmap Image { get; }
 
         /// <summary>
-        /// Gets the number of rows in this <see cref="TileSet"/>.
+        /// Gets the size of this <see cref="TileSet"/>.
         /// </summary>
-        public int Rows => tiles.GetLength(0);
-
-        /// <summary>
-        /// Gets the number of columns in this <see cref="TileSet"/>.
-        /// </summary>
-        public int Columns => tiles.GetLength(1);
+        /// <remarks>
+        /// This property is in terms of tiles.
+        /// </remarks>
+        public Size Size => new(tiles.GetLength(0), tiles.GetLength(1));
 
         /// <summary>
         /// Gets the total count of <see cref="Tile"/> structures in this <see cref="TileSet"/>.
         /// </summary>
         public int Count => tiles.GetLength(0) * tiles.GetLength(1);
+
+        /// <summary>
+        /// Gets a value indicating whether this <see cref="TileSet"/> is empty.
+        /// </summary>
+        public bool IsEmpty => this == Empty;
 
         /// <summary>
         /// Gets a <see cref="Tile"/> from this <see cref="TileSet"/> at the specified row and column.

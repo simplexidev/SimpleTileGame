@@ -65,12 +65,11 @@ namespace SimpleTileGame.Model
         /// <summary>
         /// Gets a <see cref="Tile"/> from this <see cref="TileSet"/> at the specified row and column.
         /// </summary>
-        /// <param name="row">The row the <see cref="Tile"/> is located in.</param>
-        /// <param name="column">The column the <see cref="Tile"/> is located in.</param>
+        /// <param name="row">The location the <see cref="Tile"/>, in tiles.</param>
         /// <returns>A <see cref="Tile"/> object with the specified index.</returns>
-        public Tile GetTile(int row, int column)
+        public Tile GetTile(Point index)
         {
-            return tiles[row, column];
+            return tiles[index.X, index.Y];
         }
 
         /// <summary>
@@ -100,7 +99,7 @@ namespace SimpleTileGame.Model
                 for (int j = 0; j < tiles.GetLength(1); j++)
                 {
                     // TODO: Dev Documentation.
-                    tiles[i, j] = new(new(i, j), new(i * (int)tileSize, j * (int)tileSize, (int)tileSize, (int)tileSize));
+                    tiles[i, j] = new(new Point(i, j), new Rectangle(i * (int)tileSize, j * (int)tileSize, (int)tileSize, (int)tileSize));
                 }
             }
             return tiles;

@@ -97,6 +97,24 @@ namespace SimpleTileGame.Model {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A `TileMap` must contain at least one (1) tile..
+        /// </summary>
+        internal static string TilesCannotBeNullOrEmpty {
+            get {
+                return ResourceManager.GetString("TilesCannotBeNullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A `TileMap` mst have a `TileSet` associated with it..
+        /// </summary>
+        internal static string TileSetCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("TileSetCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The specified tile size is invalid..
         /// </summary>
         internal static string TileSizeIsInvalid {

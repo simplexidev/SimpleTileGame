@@ -22,6 +22,11 @@ namespace SimpleTileGame.Model
         /// <param name="tiles">The <see cref="Tile"/> structures that make up this <see cref="TileMap"/>.</param>
         public TileMap(TileSet tileSet, Tile[,] tiles)
         {
+            if (tileSet.IsEmpty)
+                throw new ArgumentNullException(nameof(tileSet), Strings.TileSetCannotBeEmpty);
+            if (tiles is null || tiles.Length == 0)
+                throw new ArgumentNullException(nameof(tiles), Strings.TilesCannotBeNullOrEmpty);
+            
             TileSet = tileSet;
             this.tiles = tiles;
         }

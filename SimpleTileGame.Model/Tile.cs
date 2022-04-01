@@ -21,20 +21,24 @@ namespace SimpleTileGame.Model
         public Tile(Point index, Rectangle bounds) : this(index, null, bounds) { }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Tile"/> structure with the specified index and location.
+        /// </summary>
+        /// <param name="index">The index of this <see cref="Tile"/> in a <see cref="TileSet"/>, in tiles.</param>
+        /// <param name="location">The location of this <see cref="Tile"/> in a <see cref="TileMap"/>, in pixels.</param>
+        public Tile(Point index, Point location) : this(index, location, null) { }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="Tile"/> structure with the specified index and bounds.
         /// </summary>
-        /// <param name="index">The index of this <see cref="Tile"/>.</param>
-        /// <param name="location">The location of this <see cref="Tile"/> in a <see cref="TileSet"/>, in tiles.</param>
-        /// <param name="bounds">The bounds of this <see cref="Tile"/> in a <see cref="TileMap"/>, in pixels.</param>
+        /// <param name="index">The index of this <see cref="Tile"/> in a <see cref="TileSet"/>, in tiles.</param>
+        /// <param name="location">The location of this <see cref="Tile"/> in a <see cref="TileMap"/>, in tiles.</param>
+        /// <param name="bounds">The bounds of this <see cref="Tile"/> in a <see cref="TileSet"/>, in pixels.</param>
         /// <remarks>
         /// This constructor should be used only when initializing <see cref="Tile"/> structures in a
         /// <see cref="TileMap"/>, as the <see cref="Location"/> property is unused in a <see cref="TileSet"/>.
         /// </remarks>
-        public Tile(Point index, Point? location, Rectangle bounds)
+        public Tile(Point index, Point? location, Rectangle? bounds)
         {
-            if (index.IsEmpty) throw new ArgumentNullException(nameof(index), Strings.TileIndexCannotBeEmpty);
-            if (bounds.IsEmpty) throw new ArgumentNullException(nameof(bounds), Strings.TileBoundsCannotBeEmpty);
-
             Index = index;
             Location = location;
             Bounds = bounds;
@@ -63,7 +67,7 @@ namespace SimpleTileGame.Model
         /// <remarks>
         /// This property is in terms of pixels.
         /// </remarks>
-        public Rectangle Bounds { get; }
+        public Rectangle? Bounds { get; }
 
         /// <summary>
         /// Gets a value indicating whether this <see cref="Tile"/> is empty.

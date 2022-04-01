@@ -129,6 +129,12 @@
   <data name="TileIndexCannotBeEmpty" xml:space="preserve">
     <value>A tile's index cannot be empty.</value>
   </data>
+  <data name="TilesCannotBeNullOrEmpty" xml:space="preserve">
+    <value>A `TileMap` must contain at least one (1) tile.</value>
+  </data>
+  <data name="TileSetCannotBeEmpty" xml:space="preserve">
+    <value>A `TileMap` mst have a `TileSet` associated with it.</value>
+  </data>
   <data name="TileSizeIsInvalid" xml:space="preserve">
     <value>The specified tile size is invalid.</value>
   </data>

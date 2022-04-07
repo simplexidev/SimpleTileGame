@@ -1,6 +1,8 @@
 ﻿using System; // IEquatable<T>, ArgumentNullException
 using System.Drawing; // Size
 
+//TODO: Review Documentation
+//TODO: Review ToString() Output
 namespace SimpleTileGame.Model // Tile, TileSet
 {
     /// <summary>
@@ -61,6 +63,9 @@ namespace SimpleTileGame.Model // Tile, TileSet
         /// <returns>A <see cref="Tile"/> object with the specified lcoation.</returns>
         public Tile GetTile(Point location)
         {
+            if (location.X > Size.Width || location.Y > Size.Height)
+                throw new ArgumentOutOfRangeException(nameof(location), "The specified tile location is out of range.")
+
             return tiles[location.X, location.Y];
         }
 

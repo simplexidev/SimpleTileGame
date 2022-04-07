@@ -1,6 +1,9 @@
 ﻿using System; // ArgumentNullException, IEquatable<T>, HashCode
 using System.Drawing; // Point, Rectangle
 
+//TODO: Review Documentation
+//TODO: Add null-checks to the constructors.
+//TODO: Review ToString() Output
 namespace SimpleTileGame.Model
 {
     /// <summary>
@@ -9,7 +12,7 @@ namespace SimpleTileGame.Model
     public readonly struct Tile : IEquatable<Tile>
     {
         /// <summary>
-        /// Represents an uninitialized <see cref="Tile"/> structure.
+        /// Represents a <see cref="Tile"/> structure with uninitialized values.
         /// </summary>
         public static readonly Tile Empty = new();
 
@@ -18,6 +21,9 @@ namespace SimpleTileGame.Model
         /// </summary>
         /// <param name="index">The index of this tile, in tiles.</param>
         /// <param name="bounds">The bounds of this tile, in pixels.</param>
+        /// <remarks>
+        /// This constructor is to be used for <see cref="Tile"/> structures in a <see cref="TileSet"/>.
+        /// </remarks>
         public Tile(Point index, Rectangle bounds) : this(index, null, bounds) { }
 
         /// <summary>
@@ -25,6 +31,10 @@ namespace SimpleTileGame.Model
         /// </summary>
         /// <param name="index">The index of this <see cref="Tile"/> in a <see cref="TileSet"/>, in tiles.</param>
         /// <param name="location">The location of this <see cref="Tile"/> in a <see cref="TileMap"/>, in pixels.</param>
+        /// <remarks>
+        /// This constructor should be used only when initializing <see cref="Tile"/> structures in a
+        /// <see cref="TileMap"/>.
+        /// </remarks>
         public Tile(Point index, Point location) : this(index, location, null) { }
 
         /// <summary>
@@ -33,12 +43,10 @@ namespace SimpleTileGame.Model
         /// <param name="index">The index of this <see cref="Tile"/> in a <see cref="TileSet"/>, in tiles.</param>
         /// <param name="location">The location of this <see cref="Tile"/> in a <see cref="TileMap"/>, in tiles.</param>
         /// <param name="bounds">The bounds of this <see cref="Tile"/> in a <see cref="TileSet"/>, in pixels.</param>
-        /// <remarks>
-        /// This constructor should be used only when initializing <see cref="Tile"/> structures in a
-        /// <see cref="TileMap"/>, as the <see cref="Location"/> property is unused in a <see cref="TileSet"/>.
-        /// </remarks>
-        public Tile(Point index, Point? location, Rectangle? bounds)
+        private Tile(Point index, Point? location, Rectangle? bounds)
         {
+            if (index == Point.Empty)
+                throw new ArgumentNullException(nameof(index), "A tile structure must have an index.");
             Index = index;
             Location = location;
             Bounds = bounds;
@@ -75,8 +83,7 @@ namespace SimpleTileGame.Model
         public bool IsEmpty => this == Empty;
 
         /// <summary>
-        /// Spacifies whether this <see cref="Tile"/> contains the same index, location, and bounds as another
-        /// <see cref="Tile"/>.
+        /// Specifies whether this <see cref="Tile"/> contains the same values as the specified <see cref="Tile"/>.
         /// </summary>
         /// <param name="other">The <see cref="Tile"/> to test for equality.</param>
         /// <returns>
@@ -88,7 +95,7 @@ namespace SimpleTileGame.Model
         }
 
         /// <summary>
-        /// Spacifies whether this <see cref="Tile"/> contains the same values as the specified <see cref="object"/>.
+        /// Specifies whether this <see cref="Tile"/> contains the same values as the specified <see cref="object"/>.
         /// </summary>
         /// <param name="other">The <see cref="object"/> to test for equality.</param>
         /// <returns>

@@ -1,9 +1,11 @@
 ﻿using System; // ArgumentNullException, ArguemntOutOfRangeException, IEquatable<T>, InvalidOperationException
 using System.Drawing; // Bitmap, Size
 
-namespace SimpleTileGame.Model // Tile
+//TODO: Add a `ImagePath` property.
+//TODO: Review Documentation
+//TODO: Review ToString() Output
+namespace SimpleTileGame.Model
 {
-    //TODO: Add a `ImagePath` property.
     /// <summary>
     /// Represents a set of <see cref="Tile"/> structures that can be used in a <see cref="TileMap"/>.
     /// </summary>
@@ -31,9 +33,13 @@ namespace SimpleTileGame.Model // Tile
             if ((int)tileSize != 16 && (int)tileSize != 32 && (int)tileSize != 64)
                 throw new ArgumentOutOfRangeException(nameof(tileSize), Strings.TileSizeIsInvalid);
 
-            // Initialize, validate and set the image.
+            // Initialize a new image based on the image path provided.
             Bitmap image = new(imagePath);
+
+            // Validate the image's size is divisible by the provided tile size.
             ValidateImageSize(image, tileSize);
+
+            // Set the image.
             Image = image;
 
             // Set the tile size.
@@ -56,9 +62,7 @@ namespace SimpleTileGame.Model // Tile
         /// <summary>
         /// Gets the size of this <see cref="TileSet"/>.
         /// </summary>
-        /// <remarks>
-        /// This property is in terms of tiles.
-        /// </remarks>
+        /// <remarks>This property is in terms of tiles.</remarks>
         public Size Size => new(tiles.GetLength(0), tiles.GetLength(1));
 
         /// <summary>
@@ -78,7 +82,8 @@ namespace SimpleTileGame.Model // Tile
         /// <returns>A <see cref="Tile"/> object with the specified index.</returns>
         public Tile GetTile(Point index)
         {
-            //TODO: Range check for index
+            if (index.X > Size.Width || index.Y > Size.Height)
+                throw new ArgumentOutOfRangeException(nameof(location), "The specified tile index is out of range.")
             return tiles[index.X, index.Y];
         }
 
@@ -89,21 +94,22 @@ namespace SimpleTileGame.Model // Tile
         /// <param name="tileSize">The size of each tile.</param>
         private static void ValidateImageSize(Bitmap image, TileSize tileSize)
         {
-            // TODO: Dev Documentation.
+            // Ensure the dimensions of the image are divisible by the specified tile size.
             if (image.Width % (int)tileSize != 0 || image.Height % (int)tileSize != 0)
                 throw new InvalidOperationException(Strings.ImageSizeMismatch);
         }
 
         /// <summary>
-        /// Gets a two-dinensional array of tiles from a <see cref="Bitmap"/>.
+        /// Gets a two-dimensional array of tiles from a <see cref="Bitmap"/>.
         /// </summary>
         /// <param name="image">The image containing the tiles.</param>
         /// <param name="tileSize">The size of each tile.</param>
         /// <returns>A two-dimensional array of tiles from a <see cref="Bitmap"/>.</returns>
         private static Tile[,] GetTilesFromImage(Bitmap image, TileSize tileSize)
         {
-
-            //TODO: Null check for image.
+            // Ensure a valid Image value is provided.
+            if (image is null)
+                throw new ArgumentNullException(nameof(image), "An image must be provided when using a tile set.");
 
             // Ensure a valid TileSize value is provided.
             if ((int)tileSize != 16 && (int)tileSize != 32 && (int)tileSize != 64)
@@ -123,7 +129,7 @@ namespace SimpleTileGame.Model // Tile
                     // Get the index for the tile.
                     Point index = new(x, y);
 
-                    // Get the bounds for the tile.
+                    // Get the bounds location and size.
                     Point boundsLocation = new(x * (int)tileSize, y * (int)tileSize);
                     Size boundsSize = new((int)tileSize, (int)tileSize);
 

@@ -1,10 +1,8 @@
 ﻿using SimpleTileGame.Resources; // Strings
 
-using System; // ArgumentNullException, ArguemntOutOfRangeException, IEquatable<T>, InvalidOperationException
+using System; // ArgumentNullException, ArguemntOutOfRangeException, IEquatable<T>, InvalidOperationException, HashCode
 using System.Drawing; // Bitmap, Size
 
-//TODO: Add a `ImagePath` property.
-//TODO: Review Documentation
 //TODO: Review ToString() Output
 namespace SimpleTileGame.Model
 {
@@ -29,17 +27,21 @@ namespace SimpleTileGame.Model
         {
             // Ensure imagePath is not null or empty.
             if (string.IsNullOrWhiteSpace(imagePath))
-                throw new ArgumentNullException(nameof(imagePath), Strings.ImagePathMustBeProvided);
+                throw new ArgumentNullException(nameof(imagePath), Strings.TileSetImagePathMustNotBeNullOrWhiteSpace);
 
             // Ensure a valid TileSize value is provided.
             if ((int)tileSize != 16 && (int)tileSize != 32 && (int)tileSize != 64)
-                throw new ArgumentOutOfRangeException(nameof(tileSize), Strings.TileSizeIsInvalid);
+                throw new ArgumentOutOfRangeException(nameof(tileSize), Strings.TileSetTileSizeNotSupported);
 
             // Initialize a new image based on the image path provided.
             Bitmap image = new(imagePath);
 
-            // Validate the image's size is divisible by the provided tile size.
-            ValidateImageSize(image, tileSize);
+            // Ensure the dimensions of the image are divisible by the specified tile size.
+            if (image.Width % (int)tileSize != 0 || image.Height % (int)tileSize != 0)
+                throw new InvalidOperationException(Strings.TileSetImageSizeNotDivisibleByTileSize);
+
+            // Set the image path.
+            ImagePath = imagePath;
 
             // Set the image.
             Image = image;
@@ -60,6 +62,11 @@ namespace SimpleTileGame.Model
         /// Gets the image that this <see cref="TileSet"/> represents.
         /// </summary>
         public Bitmap Image { get; }
+
+        /// <summary>
+        /// Get the path of <see cref="Image"/>.
+        /// </summary>
+        public string ImagePath { get; }
 
         /// <summary>
         /// Gets the size of this <see cref="TileSet"/>.
@@ -86,22 +93,10 @@ namespace SimpleTileGame.Model
         {
             // Ensure the index is within the bounds of the tile set.
             if (index.X > Size.Width || index.Y > Size.Height)
-                throw new ArgumentOutOfRangeException(nameof(index), "The specified tile index is out of range.");
+                throw new ArgumentOutOfRangeException(nameof(index), Strings.TileSetTileIndexOutOfRange);
 
             // Return the tile with the specified index.
             return tiles[index.X, index.Y];
-        }
-
-        /// <summary>
-        /// Validates an image that it contains an even amount of tiles of the specified size.
-        /// </summary>
-        /// <param name="image">The image containing the tiles.</param>
-        /// <param name="tileSize">The size of each tile.</param>
-        private static void ValidateImageSize(Bitmap image, TileSize tileSize)
-        {
-            // Ensure the dimensions of the image are divisible by the specified tile size.
-            if (image.Width % (int)tileSize != 0 || image.Height % (int)tileSize != 0)
-                throw new InvalidOperationException(Strings.ImageSizeMismatch);
         }
 
         /// <summary>
@@ -114,11 +109,11 @@ namespace SimpleTileGame.Model
         {
             // Ensure a valid Image value is provided.
             if (image is null)
-                throw new ArgumentNullException(nameof(image), "An image must be provided when using a tile set.");
+                throw new ArgumentNullException(nameof(image), Strings.TileSetImageMustNotBeNull);
 
             // Ensure a valid TileSize value is provided.
             if ((int)tileSize != 16 && (int)tileSize != 32 && (int)tileSize != 64)
-                throw new ArgumentOutOfRangeException(nameof(tileSize), Strings.TileSizeIsInvalid);
+                throw new ArgumentOutOfRangeException(nameof(tileSize), Strings.TileSetTileSizeNotSupported);
 
             // Determine the TileMap's width and height.
             int tileMapWidth = image.Width / (int)tileSize;

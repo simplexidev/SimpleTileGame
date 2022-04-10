@@ -95,5 +95,50 @@ namespace SimpleTileGame.Resources {
                 return ResourceManager.GetString("TileLocationMustNotBeNegative", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A `TileSet` structure&apos;s image must not be null..
+        /// </summary>
+        internal static string TileSetImageMustNotBeNull {
+            get {
+                return ResourceManager.GetString("TileSetImageMustNotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A `TileSet` structure&apos;s image must not have a null path..
+        /// </summary>
+        internal static string TileSetImagePathMustNotBeNullOrWhiteSpace {
+            get {
+                return ResourceManager.GetString("TileSetImagePathMustNotBeNullOrWhiteSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A `TileSet` structure&apos;s image size must be divisible by it&apos;s tile size..
+        /// </summary>
+        internal static string TileSetImageSizeNotDivisibleByTileSize {
+            get {
+                return ResourceManager.GetString("TileSetImageSizeNotDivisibleByTileSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified `Tile` index is out of range for this `TileSet`..
+        /// </summary>
+        internal static string TileSetTileIndexOutOfRange {
+            get {
+                return ResourceManager.GetString("TileSetTileIndexOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A `TileSet` structure&apos;s tile size must be a valid `TileSize` value..
+        /// </summary>
+        internal static string TileSetTileSizeNotSupported {
+            get {
+                return ResourceManager.GetString("TileSetTileSizeNotSupported", resourceCulture);
+            }
+        }
     }
 }

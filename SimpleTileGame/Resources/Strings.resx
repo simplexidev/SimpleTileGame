@@ -117,4 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="TileBoundsMustNotBeNegative" xml:space="preserve">
+    <value>A `Tile` structure's bounds must not have negative values.</value>
+  </data>
+  <data name="TileBoundsSizeMustNotBeZero" xml:space="preserve">
+    <value>A `Tile` structure's size must not have values equal to zero.</value>
+  </data>
+  <data name="TileIndexMustNotBeNegative" xml:space="preserve">
+    <value>A `Tile` structure's index must not have negative values.</value>
+  </data>
+  <data name="TileLocationMustNotBeNegative" xml:space="preserve">
+    <value>A `Tile` structure's location must not have negative values.</value>
+  </data>
+  <data name="TileSetImageMustNotBeNull" xml:space="preserve">
+    <value>A `TileSet` structure's image must not be null.</value>
+  </data>
+  <data name="TileSetImagePathMustNotBeNullOrWhiteSpace" xml:space="preserve">
+    <value>A `TileSet` structure's image must not have a null path.</value>
+  </data>
+  <data name="TileSetImageSizeNotDivisibleByTileSize" xml:space="preserve">
+    <value>A `TileSet` structure's image size must be divisible by it's tile size.</value>
+  </data>
+  <data name="TileSetTileIndexOutOfRange" xml:space="preserve">
+    <value>The specified `Tile` index is out of range for this `TileSet`.</value>
+  </data>
+  <data name="TileSetTileSizeNotSupported" xml:space="preserve">
+    <value>A `TileSet` structure's tile size must be a valid `TileSize` value.</value>
+  </data>
 </root>

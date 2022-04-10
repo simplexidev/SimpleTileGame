@@ -1,4 +1,6 @@
-﻿using System; // IEquatable<T>, ArgumentNullException
+﻿using SimpleTileGame.Resources;
+
+using System; // IEquatable<T>, ArgumentNullException
 using System.Drawing; // Size
 
 //TODO: Review Documentation
@@ -18,7 +20,7 @@ namespace SimpleTileGame.Model // Tile, TileSet
         public static readonly TileMap Empty = new();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TileMap"/> structure with the specified tileset amd tiles.
+        /// Initializes a new instance of the <see cref="TileMap"/> structure with the specified tile set and tiles.
         /// </summary>
         /// <param name="tileSet">The <see cref="Model.TileSet"/> used by this <see cref="TileMap"/>.</param>
         /// <param name="tiles">The <see cref="Tile"/> structures that make up this <see cref="TileMap"/>.</param>
@@ -57,55 +59,43 @@ namespace SimpleTileGame.Model // Tile, TileSet
         public bool IsEmpty => this == Empty;
 
         /// <summary>
-        /// Gets a <see cref="Tile"/> from this <see cref="TileMap"/> at the specified lcoation.
+        /// Gets a <see cref="Tile"/> from this <see cref="TileMap"/> at the specified index.
         /// </summary>
-        /// <param name="row">The location of the <see cref="Tile"/>.</param>
-        /// <returns>A <see cref="Tile"/> object with the specified lcoation.</returns>
-        public Tile GetTile(Point location)
+        /// <param name="row">The index of the <see cref="Tile"/>.</param>
+        /// <returns>A <see cref="Tile"/> object with the specified index.</returns>
+        public Tile GetTile(Point index)
         {
-            if (location.X > Size.Width || location.Y > Size.Height)
-                throw new ArgumentOutOfRangeException(nameof(location), "The specified tile location is out of range.")
+            if (index.X > Size.Width || index.Y > Size.Height)
+                throw new ArgumentOutOfRangeException(nameof(index), "The specified tile index is out of range.");
 
-            return tiles[location.X, location.Y];
+            return tiles[index.X, index.Y];
         }
 
         /// <summary>
-        /// Spacifies whether this <see cref="TileMap"/> contains the same index, location, and bounds as another <see cref="TileMap"/>.
+        /// Specifies whether this <see cref="TileMap"/> contains the same values as the specified <see cref="TileMap"/>.
         /// </summary>
         /// <param name="other">The <see cref="TileMap"/> to test for equality.</param>
         /// <returns><see langword="true"/> if <paramref name="other"/> has the same values as this <see cref="TileMap"/>.</returns>
-        public bool Equals(TileMap other)
-        {
-            return TileSet == other.TileSet && tiles == other.tiles;
-        }
+        public bool Equals(TileMap other) => TileSet == other.TileSet && tiles == other.tiles;
 
         /// <summary>
-        /// Spacifies whether this <see cref="TileMap"/> contains the same values as the specified <see cref="object"/>.
+        /// Specifies whether this <see cref="TileMap"/> contains the same values as the specified <see cref="object"/>.
         /// </summary>
         /// <param name="other">The <see cref="object"/> to test for equality.</param>
         /// <returns><see langword="true"/> if <paramref name="obj"/> is a <see cref="TileMap"/> and has the same values as this <see cref="TileMap"/>.</returns>
-        public override bool Equals(object? obj)
-        {
-            return obj is TileMap set && Equals(set);
-        }
+        public override bool Equals(object? obj) => obj is TileMap set && Equals(set);
 
         /// <summary>
         /// Returns a hash code for this <see cref="TileMap"/>.
         /// </summary>
         /// <returns>An integer value representing a hash value for this <see cref="TileMap"/>,</returns>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(TileSet, tiles);
-        }
+        public override int GetHashCode() => HashCode.Combine(TileSet, tiles);
 
         /// <summary>
         /// Converts this <see cref="TileMap"/> into a human-readable string.
         /// </summary>
         /// <returns>A <see cref="string"/> that represents this <see cref="TileMap"/>.</returns>
-        public override string ToString()
-        {
-            return $"[{TileSet}, {Count}]";
-        }
+        public override string ToString() => $"[{TileSet}, {Count}]";
 
         /// <summary>
         /// Compares two <see cref="TileMap"/> structures. The result indicates whether the values of the two <see cref="TileMap"> structures are equal.
@@ -113,10 +103,7 @@ namespace SimpleTileGame.Model // Tile, TileSet
         /// <param name="left">A <see cref="TileMap"/> to compare.</param>
         /// <param name="right">A <see cref="TileMap"/> to compare.</param>
         /// <returns><see langword="true"/> if the values of <paramref name="left"/> and <paramref name="right"/> are equal; otherwise, <see langword="false"/>.</returns>
-        public static bool operator ==(TileMap left, TileMap right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(TileMap left, TileMap right) => left.Equals(right);
 
         /// <summary>
         /// Compares two <see cref="TileMap"/> structures. The result indicates whether the values of the two <see cref="TileMap"> structures are unequal.
@@ -124,9 +111,6 @@ namespace SimpleTileGame.Model // Tile, TileSet
         /// <param name="left">A <see cref="TileMap"/> to compare.</param>
         /// <param name="right">A <see cref="TileMap"/> to compare.</param>
         /// <returns><see langword="true"/> if the values of <paramref name="left"/> and <paramref name="right"/> differ; otherwise, <see langword="false"/>.</returns>
-        public static bool operator !=(TileMap left, TileMap right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(TileMap left, TileMap right) => !left.Equals(right);
     }
 }

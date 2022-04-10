@@ -1,36 +1,47 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
+	  
+	<!-- This tells the compiler to create a windows `.exe` executable. -->
     <OutputType>WinExe</OutputType>
+	
+	<!-- This tells the compiler that we only support .NET 6 on Windows platforms. -->
     <TargetFramework>net6.0-windows</TargetFramework>
+	  
+	<!-- This allows for nullable types. -->
     <Nullable>enable</Nullable>
+	
+	<!-- Tells the compiler to automatically reference Windows Forms related dependencies. -->
     <UseWindowsForms>true</UseWindowsForms>
+
+	<!--TODO: We only need `PresentaionBase`; find a way to reference it directly to remove this. -->
+	<!-- Tells the compiler to automatically reference WPF related dependencies. -->
+    <UseWPF>true</UseWPF>
+	
+	<!-- Disables implicit `using` imports, meaning that each file must declare `using` statements for namespace import.  -->
     <ImplicitUsings>disable</ImplicitUsings>
+
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleTileGame.Model\SimpleTileGame.Model.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Strings.Designer.cs">
+    <Compile Update="Resources/Strings.Designer.cs">
       <DependentUpon>Strings.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Strings.resx">
+    <Compile Update="Resources\Images.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Resources/Strings.resx">
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
+	</EmbeddedResource>
+    <EmbeddedResource Update="Resources\Images.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="assets\tileset.lg.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

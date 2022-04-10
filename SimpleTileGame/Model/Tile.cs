@@ -1,8 +1,9 @@
-﻿using System; // ArgumentNullException, IEquatable<T>, HashCode
+﻿using SimpleTileGame.Resources; // Strings
+
+using System; // ArgumentNullException, ArgumentOutOfRangeExcption, IEquatable<T>, HashCode
 using System.Drawing; // Point, Rectangle
 
 //TODO: Review Documentation
-//TODO: Add null-checks to the constructors.
 //TODO: Review ToString() Output
 namespace SimpleTileGame.Model
 {
@@ -45,8 +46,23 @@ namespace SimpleTileGame.Model
         /// <param name="bounds">The bounds of this <see cref="Tile"/> in a <see cref="TileSet"/>, in pixels.</param>
         private Tile(Point index, Point? location, Rectangle? bounds)
         {
-            if (index == Point.Empty)
-                throw new ArgumentNullException(nameof(index), "A tile structure must have an index.");
+            // Ensure that `index` has values that are greater than or equal to zero.
+            if (index.X < 0 || index.Y < 0)
+                throw new ArgumentOutOfRangeException(nameof(index), Strings.TileIndexMustNotBeNegative);
+            
+            // Ensure that `location` has values that are greater than or equal to zero, if it is not null.
+            if (location != null && (location.Value.X < 0 || location.Value.Y < 0))
+                throw new ArgumentOutOfRangeException(nameof(location), Strings.TileLocationMustNotBeNegative);
+
+            // Ensure that `bounds` has values that are greater than or equal to zero, if it is not null.
+            if (bounds != null && (bounds.Value.X < 0 || bounds.Value.Y < 0 || bounds.Value.Width < 0 || bounds.Value.Height < 0))
+                throw new ArgumentOutOfRangeException(nameof(bounds), Strings.TileBoundsMustNotBeNegative);
+
+            // Ensure that `bounds` has a width and height greater than zero, if it is not null.
+            if (bounds != null && (bounds.Value.Width == 0 || bounds.Value.Height == 0))
+                throw new ArgumentOutOfRangeException(nameof(bounds), Strings.TileBoundsSizeMustNotBeZero);
+
+            // Directly set the properties with the provided values.
             Index = index;
             Location = location;
             Bounds = bounds;
@@ -89,10 +105,7 @@ namespace SimpleTileGame.Model
         /// <returns>
         /// <see langword="true"/> if <paramref name="other"/> has the same values as this <see cref="Tile"/>.
         /// </returns>
-        public bool Equals(Tile other)
-        {
-            return Index == other.Index && Location == other.Location && Bounds == other.Bounds;
-        }
+        public bool Equals(Tile other) => Index == other.Index && Location == other.Location && Bounds == other.Bounds;
 
         /// <summary>
         /// Specifies whether this <see cref="Tile"/> contains the same values as the specified <see cref="object"/>.
@@ -102,28 +115,19 @@ namespace SimpleTileGame.Model
         /// <see langword="true"/> if <paramref name="obj"/> is a <see cref="Tile"/> and has the same values as this
         /// <see cref="Tile"/>.
         /// </returns>
-        public override bool Equals(object? obj)
-        {
-            return obj is Tile tile && Equals(tile);
-        }
+        public override bool Equals(object? obj) => obj is Tile tile && Equals(tile);
 
         /// <summary>
         /// Returns a hash code for this <see cref="Tile"/>.
         /// </summary>
         /// <returns>An integer value representing a hash value for this <see cref="Tile"/>,</returns>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Index, Location, Bounds);
-        }
+        public override int GetHashCode() => HashCode.Combine(Index, Location, Bounds);
 
         /// <summary>
         /// Converts this <see cref="Tile"/> into a human-readable string.
         /// </summary>
         /// <returns>A <see cref="string"/> that represents this <see cref="Tile"/>.</returns>
-        public override string ToString()
-        {
-            return $"[{Index}, {(Location != null ? Location.ToString() : "null")}, {Bounds}";
-        }
+        public override string ToString() => $"[{Index}, {(Location != null ? Location.ToString() : "null")}, {Bounds}]";
 
         /// <summary>
         /// Compares two <see cref="Tile"/> structures. The result indicates whether the values of the two
@@ -135,10 +139,7 @@ namespace SimpleTileGame.Model
         /// <see langword="true"/> if the values of <paramref name="left"/> and <paramref name="right"/> are equal;
         /// otherwise, <see langword="false"/>.
         /// </returns>
-        public static bool operator ==(Tile left, Tile right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(Tile left, Tile right) => left.Equals(right);
 
         /// <summary>
         /// Compares two <see cref="Tile"/> structures. The result indicates whether the values of the two
@@ -150,9 +151,6 @@ namespace SimpleTileGame.Model
         /// <see langword="true"/> if the values of <paramref name="left"/> and <paramref name="right"/> differ;
         /// otherwise, <see langword="false"/>.
         /// </returns>
-        public static bool operator !=(Tile left, Tile right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(Tile left, Tile right) => !left.Equals(right);
     }
 }

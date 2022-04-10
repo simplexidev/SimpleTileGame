@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SimpleTileGame {
+namespace SimpleTileGame.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SimpleTileGame {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings {
+    internal class Images {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Strings() {
+        internal Images() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SimpleTileGame {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SimpleTileGame.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SimpleTileGame.Resources.Images", typeof(Images).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,32 @@ namespace SimpleTileGame {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A `Camera` must be provided when initializing a `MainForm` window..
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string CameraCannotBeNull {
+        internal static System.Drawing.Bitmap LargeTileSet {
             get {
-                return ResourceManager.GetString("CameraCannotBeNull", resourceCulture);
+                object obj = ResourceManager.GetObject("LargeTileSet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MediumTileSet {
+            get {
+                object obj = ResourceManager.GetObject("MediumTileSet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SmallTileSet {
+            get {
+                object obj = ResourceManager.GetObject("SmallTileSet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

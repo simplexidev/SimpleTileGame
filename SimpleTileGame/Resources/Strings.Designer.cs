@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SimpleTileGame.Model {
+namespace SimpleTileGame.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace SimpleTileGame.Model {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SimpleTileGame.Model.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SimpleTileGame.Resources.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,65 +61,38 @@ namespace SimpleTileGame.Model {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An image path must be provided when initializing a `TileSet` structure..
+        ///   Looks up a localized string similar to A `Tile` structure&apos;s bounds must not have negative values..
         /// </summary>
-        internal static string ImagePathMustBeProvided {
+        internal static string TileBoundsMustNotBeNegative {
             get {
-                return ResourceManager.GetString("ImagePathMustBeProvided", resourceCulture);
+                return ResourceManager.GetString("TileBoundsMustNotBeNegative", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Image size mismatch..
+        ///   Looks up a localized string similar to A `Tile` structure&apos;s size must not have values equal to zero..
         /// </summary>
-        internal static string ImageSizeMismatch {
+        internal static string TileBoundsSizeMustNotBeZero {
             get {
-                return ResourceManager.GetString("ImageSizeMismatch", resourceCulture);
+                return ResourceManager.GetString("TileBoundsSizeMustNotBeZero", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tile&apos;s bounds cannot be empty..
+        ///   Looks up a localized string similar to A `Tile` structure&apos;s index must not have negative values..
         /// </summary>
-        internal static string TileBoundsCannotBeEmpty {
+        internal static string TileIndexMustNotBeNegative {
             get {
-                return ResourceManager.GetString("TileBoundsCannotBeEmpty", resourceCulture);
+                return ResourceManager.GetString("TileIndexMustNotBeNegative", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A tile&apos;s index cannot be empty..
+        ///   Looks up a localized string similar to A `Tile` structure&apos;s location must not have negative values..
         /// </summary>
-        internal static string TileIndexCannotBeEmpty {
+        internal static string TileLocationMustNotBeNegative {
             get {
-                return ResourceManager.GetString("TileIndexCannotBeEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A `TileMap` must contain at least one (1) tile..
-        /// </summary>
-        internal static string TilesCannotBeNullOrEmpty {
-            get {
-                return ResourceManager.GetString("TilesCannotBeNullOrEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A `TileMap` mst have a `TileSet` associated with it..
-        /// </summary>
-        internal static string TileSetCannotBeEmpty {
-            get {
-                return ResourceManager.GetString("TileSetCannotBeEmpty", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The specified tile size is invalid..
-        /// </summary>
-        internal static string TileSizeIsInvalid {
-            get {
-                return ResourceManager.GetString("TileSizeIsInvalid", resourceCulture);
+                return ResourceManager.GetString("TileLocationMustNotBeNegative", resourceCulture);
             }
         }
     }

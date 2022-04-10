@@ -9,6 +9,9 @@ namespace SimpleTileGame
 {
     internal static class Program
     {
+        /// <summary>
+        /// Contains static constants and values used throughout the application.
+        /// </summary>
         internal static class Configuration
         {
             internal static readonly string ProgramRootPath = Directory.GetCurrentDirectory();
@@ -27,14 +30,16 @@ namespace SimpleTileGame
             TileSet tileSet = new(Configuration.TileSetLargeImagePath, TileSize.Large);
 
             // Initialize a new TileMap with random tiles and a size of 30x30.
-            TileMap tileMap = GenerateRandomTileMap(tileSet, new(30, 30));
+            TileMap tileMap = GenerateRandomTileMap(tileSet, new(100, 100));
 
-            // Initialize a new Camera with the specified TileMap and a size of 20x15.
-            Camera camera = new(tileMap, new(20, 15));
+            Sprite sprite = new(Configuration.SpriteLargeImagePath, new Rectangle(0, 0, 64, 64));
+
+            // Initialize a new Camera with the specified TileMap and a size of 20x15, starting at location 0,0.
+            GameContext context = new(tileMap, sprite, new Rectangle(0, 0, 15, 20));
 
             // Configure and run the Windows Forms Application with a new MainForm with the specified Camera.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm(camera));
+            Application.Run(context.Form);
         }
 
         //TODO: Documentation.

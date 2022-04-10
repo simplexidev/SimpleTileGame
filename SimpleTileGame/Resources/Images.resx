@@ -117,25 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ImagePathMustBeProvided" xml:space="preserve">
-    <value>An image path must be provided when initializing a `TileSet` structure.</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="LargeTileSet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\LargeTileSet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ImageSizeMismatch" xml:space="preserve">
-    <value>Image size mismatch.</value>
+  <data name="MediumTileSet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\MediumTileSet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TileBoundsCannotBeEmpty" xml:space="preserve">
-    <value>A tile's bounds cannot be empty.</value>
-  </data>
-  <data name="TileIndexCannotBeEmpty" xml:space="preserve">
-    <value>A tile's index cannot be empty.</value>
-  </data>
-  <data name="TilesCannotBeNullOrEmpty" xml:space="preserve">
-    <value>A `TileMap` must contain at least one (1) tile.</value>
-  </data>
-  <data name="TileSetCannotBeEmpty" xml:space="preserve">
-    <value>A `TileMap` mst have a `TileSet` associated with it.</value>
-  </data>
-  <data name="TileSizeIsInvalid" xml:space="preserve">
-    <value>The specified tile size is invalid.</value>
+  <data name="SmallTileSet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\SmallTileSet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

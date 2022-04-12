@@ -1,9 +1,8 @@
 ﻿using SimpleTileGame.Resources;
 
 using System; // IEquatable<T>, ArgumentNullException
-using System.Drawing; // Size
+using System.Drawing;
 
-//TODO: Review Documentation
 //TODO: Review ToString() Output
 namespace SimpleTileGame.Model // Tile, TileSet
 {
@@ -26,11 +25,15 @@ namespace SimpleTileGame.Model // Tile, TileSet
         /// <param name="tiles">The <see cref="Tile"/> structures that make up this <see cref="TileMap"/>.</param>
         public TileMap(TileSet tileSet, Tile[,] tiles)
         {
+            // Ensure the tile set is not empty.
             if (tileSet.IsEmpty)
-                throw new ArgumentNullException(nameof(tileSet), Strings.TileSetCannotBeEmpty);
+                throw new ArgumentNullException(nameof(tileSet), Strings.TileMapTileSetMustNotBeNull);
+
+            // Ensure the tiles array is not null or empty.
             if (tiles is null || tiles.Length == 0)
-                throw new ArgumentNullException(nameof(tiles), Strings.TilesCannotBeNullOrEmpty);
-            
+                throw new ArgumentNullException(nameof(tiles), Strings.TileMapTilesMustNotBeNull);
+
+            // Directly set the properties with the provided values.
             TileSet = tileSet;
             this.tiles = tiles;
         }
@@ -65,9 +68,11 @@ namespace SimpleTileGame.Model // Tile, TileSet
         /// <returns>A <see cref="Tile"/> object with the specified index.</returns>
         public Tile GetTile(Point index)
         {
+            // Ensure the index is within the bounds of the tile map.
             if (index.X > Size.Width || index.Y > Size.Height)
-                throw new ArgumentOutOfRangeException(nameof(index), "The specified tile index is out of range.");
+                throw new ArgumentOutOfRangeException(nameof(index), Strings.TileMapTileIndexOutOfRange);
 
+            // Return the tile with the specified index.
             return tiles[index.X, index.Y];
         }
 

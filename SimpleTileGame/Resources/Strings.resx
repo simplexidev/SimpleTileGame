@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GameContextPlayerSpriteMustNotBeNull" xml:space="preserve">
+    <value>A `GameContext` structure's player `Sprite` must not be null.</value>
+  </data>
+  <data name="GameContextTileMapMustNotBeNull" xml:space="preserve">
+    <value>A `GameContext` structure's `TileMap` must not be null.</value>
+  </data>
+  <data name="GameContextViewMustNotBeNull" xml:space="preserve">
+    <value>A `GameContext` structure's view must not be null.</value>
+  </data>
+  <data name="GameFormDrawOperationMustNotBeNull" xml:space="preserve">
+    <value>A `GameForm` class' `GameDrawOperation` must not be null.</value>
+  </data>
   <data name="TileBoundsMustNotBeNegative" xml:space="preserve">
     <value>A `Tile` structure's bounds must not have negative values.</value>
   </data>
@@ -128,6 +140,9 @@
   </data>
   <data name="TileLocationMustNotBeNegative" xml:space="preserve">
     <value>A `Tile` structure's location must not have negative values.</value>
+  </data>
+  <data name="TileMapTileIndexOutOfRange" xml:space="preserve">
+    <value>The specified `Tile` index is out of range for this `TileMap`.</value>
   </data>
   <data name="TileSetImageMustNotBeNull" xml:space="preserve">
     <value>A `TileSet` structure's image must not be null.</value>

@@ -61,6 +61,42 @@ namespace SimpleTileGame.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A `GameContext` structure&apos;s player `Sprite` must not be null..
+        /// </summary>
+        internal static string GameContextPlayerSpriteMustNotBeNull {
+            get {
+                return ResourceManager.GetString("GameContextPlayerSpriteMustNotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A `GameContext` structure&apos;s `TileMap` must not be null..
+        /// </summary>
+        internal static string GameContextTileMapMustNotBeNull {
+            get {
+                return ResourceManager.GetString("GameContextTileMapMustNotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A `GameContext` structure&apos;s view must not be null..
+        /// </summary>
+        internal static string GameContextViewMustNotBeNull {
+            get {
+                return ResourceManager.GetString("GameContextViewMustNotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A `GameForm` class&apos; `GameDrawOperation` must not be null..
+        /// </summary>
+        internal static string GameFormDrawOperationMustNotBeNull {
+            get {
+                return ResourceManager.GetString("GameFormDrawOperationMustNotBeNull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A `Tile` structure&apos;s bounds must not have negative values..
         /// </summary>
         internal static string TileBoundsMustNotBeNegative {
@@ -93,6 +129,15 @@ namespace SimpleTileGame.Resources {
         internal static string TileLocationMustNotBeNegative {
             get {
                 return ResourceManager.GetString("TileLocationMustNotBeNegative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified `Tile` index is out of range for this `TileMap`..
+        /// </summary>
+        internal static string TileMapTileIndexOutOfRange {
+            get {
+                return ResourceManager.GetString("TileMapTileIndexOutOfRange", resourceCulture);
             }
         }
         

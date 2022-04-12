@@ -1,9 +1,8 @@
-﻿using SimpleTileGame.Resources; // Strings
+﻿using SimpleTileGame.Resources;
 
-using System; // ArgumentNullException, ArgumentOutOfRangeExcption, IEquatable<T>, HashCode
-using System.Drawing; // Point, Rectangle
+using System;
+using System.Drawing;
 
-//TODO: Review Documentation
 //TODO: Review ToString() Output
 namespace SimpleTileGame.Model
 {

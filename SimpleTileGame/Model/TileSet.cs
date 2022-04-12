@@ -1,7 +1,7 @@
-﻿using SimpleTileGame.Resources; // Strings
+﻿using SimpleTileGame.Resources;
 
-using System; // ArgumentNullException, ArguemntOutOfRangeException, IEquatable<T>, InvalidOperationException, HashCode
-using System.Drawing; // Bitmap, Size
+using System;
+using System.Drawing;
 
 //TODO: Review ToString() Output
 namespace SimpleTileGame.Model
